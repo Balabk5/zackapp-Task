@@ -19,6 +19,7 @@ export class ProductListingComponent {
     this.productService.getProductData().subscribe({
       next:(products)=>{
         this.listOfProducts = products
+        this.productService.setProductCount(this.listOfProducts.length)
       },
       error:(err)=>{
         console.error(err);
