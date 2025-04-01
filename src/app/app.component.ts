@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { ProductListingComponent } from './Pages/product-listing/product-listing.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ButtonModule],
+  imports: [RouterOutlet, ProductListingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
