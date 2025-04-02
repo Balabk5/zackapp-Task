@@ -48,6 +48,8 @@ export class AddProductComponent {
       
       const isAddRoute = urlSegment.some(segment => segment.path === 'add-products');
       const iseditRoute = urlSegment.some(segment => segment.path === 'edit-product');
+      console.log(iseditRoute, urlSegment);
+      
       this.isEditMode = !isAddRoute; // True if it's an edit route
 
       if (isAddRoute) {
@@ -114,6 +116,9 @@ export class AddProductComponent {
     }
   }
 
-
+  ngOnDestroy(): void {
+    this.destroy$.next(); 
+    this.destroy$.complete();
+  }
 
 }

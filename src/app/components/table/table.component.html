@@ -29,11 +29,11 @@
 </ng-template>
     <ng-template #header>
       <tr>
-        <th>Code</th>
+        <th >Code </th>
 
         <th>Image</th>
-        <th>Name</th>
-        <th>Category</th>
+        <th pSortableColumn="title" >Name <p-sortIcon field="title" /></th>
+        <th pSortableColumn="category">Category <p-sortIcon field="category" /></th>
         <th>Action</th>
       </tr>
       <tr>
