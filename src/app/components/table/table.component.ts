@@ -36,11 +36,11 @@ export class TableComponent {
   }
   
   navToAddProduct(){
-    this.router.navigate(['/add-products']);
+    this.router.navigate(['/products/add-products']);
   }
 
   editRow(product: Product){
-    this.router.navigate(['/edit-product', product.id]);
+    this.router.navigate(['/products/edit-product', product.id]);
   }
   
   

@@ -1,107 +1,93 @@
-<div class="product-form-container h-screen w-full flex justify-center">
-  <div class="h-auto w-1/2 p-2">
-    <h2 class="text-2xl font-semibold mb-3">Product Form</h2>
-
-    <form
-      [formGroup]="productForm"
-      class="flex flex-row gap-3 flex-wrap items-center"
-      (ngSubmit)="onSubmit()"
-    >
-      <div class="flex flex-col">
-        <label for="id">ID</label>
-        <input id="id" type="text" pInputText formControlName="id" />
-      </div>
-
-      <div class="flex flex-col">
-        <label for="title">Title</label>
-        <input id="title" type="text" pInputText formControlName="title" />
-        <p-message
-          *ngIf="
-            productForm.get('title')?.invalid &&
-            productForm.get('title')?.touched
-          "
-          severity="error"
-          text="Title is required."
-        ></p-message>
-      </div>
-
-      <div class="flex flex-col">
-        <label for="price">Price</label>
-        <p-inputNumber inputId="price" formControlName="price"></p-inputNumber>
-        <p-message
-          *ngIf="
-            productForm.get('price')?.invalid &&
-            productForm.get('price')?.touched
-          "
-          severity="error"
-          text="Price must be a positive number."
-        ></p-message>
-      </div>
-
-      <div class="flex flex-col">
-        <label for="description">Description</label>
-        <textarea
-          id="description"
-          rows="1"
-          pTextarea
-          formControlName="description"
-        ></textarea>
-        <p-message
-          *ngIf="
-            productForm.get('description')?.invalid &&
-            productForm.get('description')?.touched
-          "
-          severity="error"
-          text="Description is required."
-        ></p-message>
-      </div>
-
-      <div class="flex flex-col w-2/5">
-        <label for="category">Category</label>
-        <p-dropdown
-          id="category"
-          formControlName="category"
-          [options]="categories"
-          placeholder="Select a category"
-        ></p-dropdown>
-
-        <p-message
-          *ngIf="
-            productForm.get('category')?.invalid &&
-            productForm.get('category')?.touched
-          "
-          severity="error"
-          text="Category is required."
-        ></p-message>
-      </div>
-
-      <div class="flex flex-col w-2/5">
-        <label for="image">Image URL</label>
-        <input id="image" type="text" pInputText formControlName="image" />
-        <p-message
-          *ngIf="
-            productForm.get('image')?.hasError('required') &&
-            productForm.get('image')?.touched
-          "
-          severity="error"
-          text="Image URL is required."
-        ></p-message>
-
-        <p-message
-          *ngIf="
-            productForm.get('image')?.hasError('pattern') &&
-            productForm.get('image')?.touched
-          "
-          severity="error"
-          text="Please enter a valid URL (e.g., https://example.com/image.jpg)."
-        ></p-message>
-      </div>
-      <p-button
-        class="w-1/2"
-        type="submit"
-        label="Submit"
-        [disabled]="productForm.invalid"
-      ></p-button>
-    </form>
+<div class="product-form-container h-screen w-full flex justify-center items-center">
+    <div class="h-96  w-1/2 p-6 shadow-md rounded-sm    ">
+      <h2 class="text-2xl font-semibold mb-3">Product Form</h2>
+  
+      <form
+        [formGroup]="productForm"
+        class="grid grid-cols-2 gap-4"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="flex flex-col">
+          <label for="id">ID</label>
+          <input  id="id" type="text" pInputText  [disabled]="true" formControlName="id" />
+        </div>
+  
+        <div class="flex flex-col">
+          <label for="title">Title</label>
+          <input id="title" type="text" pInputText formControlName="title" />
+          <p-message
+            *ngIf="productForm.get('title')?.invalid && productForm.get('title')?.touched"
+            severity="error"
+            text="Title is required."
+          ></p-message>
+        </div>
+  
+        <div class="flex flex-col">
+          <label for="price">Price</label>
+          <p-inputNumber inputId="price" formControlName="price"></p-inputNumber>
+          <p-message
+            *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched"
+            severity="error"
+            text="Price must be a positive number."
+          ></p-message>
+        </div>
+  
+        <div class="flex flex-col">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            rows="1"
+            pTextarea
+            formControlName="description"
+          ></textarea>
+          <p-message
+            *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched"
+            severity="error"
+            text="Description is required."
+          ></p-message>
+        </div>
+  
+        <div class="flex flex-col w-full">
+          <label for="category">Category</label>
+          <p-dropdown
+            id="category"
+            formControlName="category"
+            [options]="categories"
+            placeholder="Select a category"
+          ></p-dropdown>
+  
+          <p-message
+            *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched"
+            severity="error"
+            text="Category is required."
+          ></p-message>
+        </div>
+  
+        <div class="flex flex-col w-full">
+          <label for="image">Image URL</label>
+          <input id="image" type="text" pInputText formControlName="image" />
+          <p-message
+            *ngIf="productForm.get('image')?.hasError('required') && productForm.get('image')?.touched"
+            severity="error"
+            text="Image URL is required."
+          ></p-message>
+  
+          <p-message
+            *ngIf="productForm.get('image')?.hasError('pattern') && productForm.get('image')?.touched"
+            severity="error"
+            text="Please enter a valid URL (e.g., https://example.com/image.jpg)."
+          ></p-message>
+        </div>
+  
+        <div class="col-span-2 flex justify-end">
+          <p-button
+            
+            type="submit"
+            label="Submit"
+            [disabled]="productForm.invalid"
+          ></p-button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+  

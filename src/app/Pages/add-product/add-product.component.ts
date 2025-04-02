@@ -44,6 +44,8 @@ export class AddProductComponent {
   ngOnInit(): void {
     // Check the current route
     this.route.url.pipe(takeUntil(this.destroy$)).subscribe((urlSegment) => {
+      console.log(urlSegment);
+      
       const isAddRoute = urlSegment.some(segment => segment.path === 'add-products');
       this.isEditMode = !isAddRoute; // True if it's an edit route
 
@@ -77,7 +79,7 @@ export class AddProductComponent {
   }
   private initializeForm(product?: Product): void {
     this.productForm = this.fb.group({
-      id: [{ value: product?.id || this.productCount, disabled: false }],
+      id: [ product?.id || this.productCount ],
       title: [product?.title || '', Validators.required],
       price: [product?.price || '', [Validators.required, Validators.min(0)]],
       description: [product?.description || '', Validators.required],
