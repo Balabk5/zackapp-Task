@@ -12,4 +12,3 @@ interface Rating {
     image: string;
     rating: Rating;
   }
-  
