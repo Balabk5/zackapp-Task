@@ -35,11 +35,11 @@ export class AddProductComponent {
   constructor(private fb: FormBuilder, private productService: ProdutsService, private router: Router, private route: ActivatedRoute) {}
   categories = [
     { label: 'Electronics', value: 'electronics' },
-    { label: 'Clothing', value: 'clothing' },
-    { label: 'Home Appliances', value: 'home-appliances' },
-    { label: 'Books', value: 'books' },
-    { label: 'Toys', value: 'toys' }
+    { label: 'Jewelry', value: 'jewelery' },
+    { label: "Women's clothing", value: "women's clothing" },
+    { label: "Men's clothing", value: "men's clothing" },
   ];
+  
 
   ngOnInit(): void {
     // Check the current route
@@ -47,6 +47,7 @@ export class AddProductComponent {
       console.log(urlSegment);
       
       const isAddRoute = urlSegment.some(segment => segment.path === 'add-products');
+      const iseditRoute = urlSegment.some(segment => segment.path === 'edit-product');
       this.isEditMode = !isAddRoute; // True if it's an edit route
 
       if (isAddRoute) {
@@ -57,7 +58,7 @@ export class AddProductComponent {
             this.productCount = count + 1;
             this.initializeForm(); // Call form init after setting count
           });
-      } else {
+      } else if(iseditRoute) {
         // If route is "edit-product/:id", get the product ID
         this.productId = Number(this.route.snapshot.paramMap.get('id'));
         this.productCount = this.productId; // Using product ID for form

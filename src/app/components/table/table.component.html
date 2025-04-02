@@ -34,6 +34,7 @@
         <th>Image</th>
         <th>Name</th>
         <th>Category</th>
+        <th>Action</th>
       </tr>
       <tr>
         <th>
@@ -58,6 +59,7 @@
                 ariaLabel="Filter Name"
             ></p-columnFilter>
         </th>
+        <th></th>
       </tr>
     </ng-template>
     <ng-template #body let-product>
@@ -66,7 +68,7 @@
         <td><img class="h-full w-10" [src]="product.image" alt="" /></td>
         <td>{{ product.title }}</td>
         <td>{{ product.category }}</td>
-        <td>{{ product.category }}</td>
+        
         <td>
             <p-button (onClick)="editRow(product)" icon="pi pi-pencil" severity="secondary" size="small" ></p-button>
             <p-button (onClick)="deleteRow(product)" icon="pi pi-trash" severity="danger" size="small"  ></p-button>
